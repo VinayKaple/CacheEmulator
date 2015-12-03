@@ -1,9 +1,9 @@
 //Author:Vinay Kaple
 #ifndef CONVERSION_HH_
 #define CONVERSION_HH_
-#include <cstdlib.h>
-#include <string.h>
-#include <math.h>
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
 
 
 
