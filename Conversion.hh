@@ -1,7 +1,7 @@
 //Author:Vinay Kaple
 #ifndef CONVERSION_HH_
 #define CONVERSION_HH_
-#include <stdlib.h>
+#include <cstdlib.h>
 #include <string.h>
 #include <math.h>
 
