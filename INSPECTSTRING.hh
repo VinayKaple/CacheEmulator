@@ -13,13 +13,13 @@
 int inspect_string(char *one, char *two)
 {
 	while(*one ==*two){
-		if(*one == '\O'|| *two == '\O'){
+		if(*one == '\0'|| *two == '\0'){
 		break;
 		one++;
 		two++;
 		
 	}
-	if(*one == '\O'|| *two == '\O'){
+	if(*one == '\0'|| *two == '\0'){
 		return 0;}
 		else{
 		return -1;}
