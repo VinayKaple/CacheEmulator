@@ -1,0 +1,49 @@
+#include <iostream>
+#include "directmapped.h"
+#include "SETASSOCIATIVITY.h"
+#include "CACHEBLOCKSTRUCTURE.hh"
+#include "fullyassociativity.h"
+
+int main (){
+/*int BS,CB,MMB,WS;
+int total=16;*/
+//int AT[16];
+
+/*cout<<"BS" << "\n";
+cin >> BS ;
+cout<<"CB" << "\n";
+cin >> CB ;
+cout<<"MMB" << "\n";
+cin >> MMB ;
+cout<<"WS" << "\n";
+cin >> WS ;*/
+/*int x=0;
+while (x<total)
+{
+cout<<"Enter AT"<<"\n";
+cin>>AT[x];
+x++;
+}*/
+int AT[16]={2,5,6,9,21,18,20,57,10,11,5,43,6,7,10,18};
+int AS;
+cout<<"Enter Associativity:";
+cin>>AS;
+switch(AS)
+{	case 1: {
+			DM a(4,4,4,1,AT);
+			a.directmapped();
+			break;
+			}
+	case 2: {
+			SA b(4,4,4,1,AT);
+			b.setassociativity();
+			break;
+			}
+	case 4: {
+			FA c(4,4,4,1,AT);
+			c.fullassociativity();
+			break;
+			}
+	default: cout<<"\nInvalid choice!!!";
+}
+}
