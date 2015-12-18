@@ -1,70 +1,3 @@
-
-Conversation opened. 1 unread message.
-
-Skip to content
-Using Gmail with screen readers
-Vinay
-Search
-
-
-
-Click here to enable desktop notifications for Gmail.   Learn more  Hide
-Gmail
-COMPOSE
-Labels
-Inbox (177)
-Starred
-Important
-Sent Mail
-Drafts (23)
-Circles
-Notes
-Personal
-Travel
-More 
-Hangouts
-
- 
- 
- 
-  More 
-1 of 515  
- 
-Print all In new window
-final
-Inbox
-x 
-
-Vinay Kaple <vkap13@gmail.com>
-Attachments10:49 PM (5 minutes ago)
-
-to me 
-4 Attachments 
- 
-Preview attachment Cacheemulator.cpp
-
-C++
-Cacheemulator.cpp
-Preview attachment directmapped.h
-
-C
-directmapped.h
-Preview attachment fullyassociativity.h
-
-C
-fullyassociativity.h
-Preview attachment SETASSOCIATIVITY.h
-
-C
-SETASSOCIATIVITY.h
-	
-Click here to Reply or Forward
-6.4 GB (42%) of 15 GB used
-Manage
-Terms - Privacy
-Last account activity: 5 minutes ago
-Details
-
 #ifndef directmapped_H_
 #define directmapped_H_
 
@@ -128,7 +61,7 @@ index = (int)(log((double)CB)/log((double)2));
 
 	z=b2d(&Badd[7-offset-index]);
 
-//printf(".vld = %d",cfp[z].vld);
+
 	if (cfp[z].vld == 1 && strcmp(cfp[z].tag,Btag)== 0) 
 	{
 
@@ -156,7 +89,4 @@ cout <<"Direct Mapped:  "<<"MISS: "<<count_miss<<"\t"<<"HIT: "<< count_hit <<"\n
 
 };
 #endif
-directmapped.h
-Open with
-2 of 4 items
-Cacheemulator.cppdirectmapped.hfullyassociativity.hSETASSOCIATIVITY.hDisplaying directmapped.h.
+
