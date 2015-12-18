@@ -1,0 +1,162 @@
+
+Conversation opened. 1 unread message.
+
+Skip to content
+Using Gmail with screen readers
+Vinay
+Search
+
+
+
+Click here to enable desktop notifications for Gmail.   Learn more  Hide
+Gmail
+COMPOSE
+Labels
+Inbox (177)
+Starred
+Important
+Sent Mail
+Drafts (23)
+Circles
+Notes
+Personal
+Travel
+More 
+Hangouts
+
+ 
+ 
+ 
+  More 
+1 of 515  
+ 
+Print all In new window
+final
+Inbox
+x 
+
+Vinay Kaple <vkap13@gmail.com>
+Attachments10:49 PM (5 minutes ago)
+
+to me 
+4 Attachments 
+ 
+Preview attachment Cacheemulator.cpp
+
+C++
+Cacheemulator.cpp
+Preview attachment directmapped.h
+
+C
+directmapped.h
+Preview attachment fullyassociativity.h
+
+C
+fullyassociativity.h
+Preview attachment SETASSOCIATIVITY.h
+
+C
+SETASSOCIATIVITY.h
+	
+Click here to Reply or Forward
+6.4 GB (42%) of 15 GB used
+Manage
+Terms - Privacy
+Last account activity: 5 minutes ago
+Details
+
+#ifndef directmapped_H_
+#define directmapped_H_
+
+#include <iostream>
+#include<ostream>
+#include<fstream>
+
+#include <iomanip>
+#include<cmath>
+#include<cstdlib>
+#include <string.h>
+#include<stdio.h>
+#include "Conversion.hh"
+
+#include "CACHEBLOCKSTRUCTURE.hh"
+using namespace std;
+class DM {
+private:
+	int BS, CB, MMB, WS;
+	int (&A)[16];
+public:
+	DM(int BS, int CB, int MMB, int WS, int (&A)[16]):BS(BS),CB(CB),MMB(MMB),WS(WS),A(A){}
+
+	int directmapped (){
+	int total = 16;
+	struct cache_block cfp[CB];
+	int count_hit=0;
+	int count_miss=0;
+	int index;
+	int x=0;
+	int blocksize = BS * WS;
+	int offset = log(blocksize)/log(2);
+
+while (x<total)
+{
+char *bword;
+char *Badd;
+char *Btag;
+
+int i,z;
+int j;
+Badd=(char*) malloc((7-offset)*(sizeof(char)));
+bword = d2b(A[x]);
+for (i=(7-offset); i>0; i--)
+{
+	Badd[i-1] = bword[i-1];
+}
+index = (int)(log((double)CB)/log((double)2));
+
+
+
+
+	Btag= (char*)malloc((7-offset-index)*sizeof(char));
+
+	for (j=7-offset-index; j>0; j--)
+	{
+		Btag[j-1] = Badd[j-1];
+
+	}
+
+
+	z=b2d(&Badd[7-offset-index]);
+
+//printf(".vld = %d",cfp[z].vld);
+	if (cfp[z].vld == 1 && strcmp(cfp[z].tag,Btag)== 0) 
+	{
+
+		count_hit++;
+	}
+	else 
+	{
+
+		count_miss++;
+		cfp[z].vld = 1;
+		cfp[z].tag = strdup(Btag);
+	}
+cout <<"MEMADD:"<<A[x]<<" "<<"Block add: "<<Badd<<" "<<"Tag:"<<" "<<Btag<<" "<<"Index :"<<&Badd[7-offset-index]<<" "<<"MISS: "<<count_miss<<" "<<"HIT: "<< count_hit <<"\n";
+
+
+
+	
+free(Badd);
+free(Btag);
+x++;
+}
+cout <<"Direct Mapped:  "<<"MISS: "<<count_miss<<"\t"<<"HIT: "<< count_hit <<"\n";
+
+}
+
+};
+#endif
+directmapped.h
+Open with
+2 of 4 items
+Cacheemulator.cppdirectmapped.hfullyassociativity.hSETASSOCIATIVITY.hDisplaying directmapped.h.
