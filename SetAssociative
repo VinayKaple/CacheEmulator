@@ -1,0 +1,109 @@
+
+#ifndef SETASSOCIATIVITY_H_
+#define SETASSOCIATIVITY_H_
+
+#include <iostream>
+#include<ostream>
+#include<fstream>
+//#include <time.h>
+#include<stdio.h>
+#include <iomanip>
+#include<cmath>
+#include<cstdlib>
+#include <string.h>
+#include "Conversion.hh"
+//#include "INSPECTSTRING.hh"
+#include "CACHEBLOCKSTRUCTURE.hh"
+
+using namespace std;
+class SA {
+private:
+	int BS, CB, MMB, WS;
+		int (&A)[16];
+public:
+	SA(int BS, int CB, int MMB, int WS, int (&A)[16]):BS(BS),CB(CB),MMB(MMB),WS(WS),A(A){}
+
+int setassociativity(){
+	int total = 16;
+	struct cache_block cfp[CB];
+	int count_hit=0;
+	int count_miss=0;
+	int index;
+	int x=0;
+	int blocksize = BS * WS;
+	int offset = log(blocksize)/log(2);
+
+while (x<total)
+{
+char *bword;
+char *Badd;
+char *Btag;
+
+int i,z;
+int j;
+Badd=(char*) malloc((7-offset)*(sizeof(char)));
+bword = d2b(A[x]);
+for (i=(7-offset); i>0; i--)
+{
+	Badd[i-1] = bword[i-1];
+}
+// Set associativity 
+	int row;
+	index = (int)(log((double)(CB/2))/log((double)2));
+
+
+
+
+	Btag=(char*) malloc((7-offset-index)*sizeof(char));
+
+	for (j=7-offset-index; j>0; j--)
+	{
+		Btag[j-1] = Badd[j-1];
+
+	}
+
+
+	z=b2d(&Badd[7-offset-index]);
+	row = z*2;
+
+//cout<<cfp[row].vld<<"   BTG"<<Btag<<"    comp"<<strcmp(cfp[row].tag,Btag)<<"\n";
+	if (cfp[row].vld == 1 && strcmp(cfp[row].tag,Btag)== 0) 
+	{
+
+		count_hit++;
+		cfp[row].lru++;
+	}
+	else if (cfp[row+1].vld == 1 && strcmp(cfp[row+1].tag,Btag)== 0) 
+	{
+
+		count_hit++;
+		cfp[row+1].lru++;
+	}
+	else 
+	{
+
+		if (cfp[row].vld != 1)
+			row = row;
+		else if (cfp[row+1].vld != 1)
+			row=row+1;
+		else if (cfp[row].lru < cfp[row+1].lru)
+			row=row;
+		else
+			row=row+1;
+
+		count_miss++;
+		cfp[row].vld = 1;
+		cfp[row].tag = strdup(Btag);
+		cfp[row].lru =1 ;
+
+	}
+	
+cout <<"MEMADD:"<<A[x]<<" "<<"Block add: "<<Badd<<" "<<"Tag:"<<" "<<Btag<<" "<<"Index :"<<&Badd[7-offset-index]<<" "<<"MISS: "<<count_miss<<" "<<"HIT: "<< count_hit <<"\n";
+free(Badd);
+free(Btag);
+x++;
+}
+cout <<"2-way Set associative:  "<<"MISS: "<<count_miss<<"\t"<<"HIT: "<< count_hit <<"\n";
+}
+};
+#endif
